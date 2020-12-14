@@ -16,7 +16,6 @@ const Reservation = () => {
   const [inputTours, setInputTours] = useState("");
   const [getPrice, setGetPrice] = useState(0);
   const [ReserveID, setReserveID] = useState(0);
-  const [AddressPayment, setAddressPayment] = useState("0x0");
 
   const handleOnClickSaveOffer = async () => {
     setReserved(true);
@@ -28,6 +27,7 @@ const Reservation = () => {
       inputActivities,
       inputTours
     );
+    console.log(res);
   };
 
   const handleOnClickGetID = async () => {
@@ -48,18 +48,6 @@ const Reservation = () => {
     await Tourisme.reserveByClient(ReserveID);
   };
 
-  /* const handleOnClickGetID = async () => {
-    const res = await Tourisme.choose_offer(
-      destination,
-      inputAccommodation,
-      inputTransport,
-      inputCatering,
-      inputActivities,
-      inputTours
-    );
-    setReserveID(res.toString());
-  }; */
-
   function refreshPage() {
     window.location.reload(false);
   }
@@ -72,7 +60,7 @@ const Reservation = () => {
             <div className="head">
               <h2>Reservation</h2>
             </div>
-            <form className="form" onSubmit={handleOnClickPay}>
+            <form className="form">
               {destination !== undefined ? (
                 <p>
                   Your trip to <span>{destination}</span>
@@ -208,6 +196,7 @@ const Reservation = () => {
                 type="submit"
                 title="Pay reservation"
                 className="pay"
+                onClick={handleOnClickPay}
               >
                 PAY
               </button>

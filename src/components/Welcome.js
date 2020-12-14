@@ -1,21 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Web3Context } from "../hooks/useWeb3";
 import { ethers } from "ethers";
 import { TourismeContext } from "../App";
-import { TourTokenContext } from "../App";
 import { Link } from "react-router-dom";
 
 const Welcome = () => {
   const Tourisme = useContext(TourismeContext);
-  const TourToken = useContext(TourTokenContext);
- 
-  const [amount, setAmount] = useState(0);
-  const [addrClient, setAddrClient] = useState("0x0");
-  const [getTokens, setGetTokens] = useState(false);
-  
-  //const nbTokens = ethers.utils.parseEther(amount);
-  const handleGetFreeTokens = async () => {
-    await TourToken.mint(addrClient, amount);
+  const [showTokens, setShowTokens] = useState(false);
+
+  const [TokenNumber, setTokenNumber] = useState("0");
+  const handleBuyTokens = async () => {
+    await Tourisme.buyTokens(ethers.utils.parseEther(TokenNumber.toString()));
   };
 
   return (
@@ -28,28 +22,26 @@ const Welcome = () => {
           </div>
           <div className="col-lg-6 links">
             <Link to="/travels">Destinations</Link>
-            <button onClick={() => setGetTokens(!getTokens)}>Get tokens</button>
+
+            <button onClick={() => setShowTokens(!showTokens)}>
+              Buy tokens
+            </button>
           </div>
           <div className="getTokens">
-            {getTokens && (
+            {showTokens && (
               <>
                 <hr />
                 <form>
-                  <label>Client Address :</label>
+                  <label>Number of Tokens :</label>
                   <input
-                    value={addrClient}
+                    value={TokenNumber}
                     onChange={(e) => {
-                      setAddrClient(e.currentTarget.value);
+                      setTokenNumber(e.currentTarget.value);
                     }}
                   />
-                  <label>Amount in token :</label>
-                  <input
-                    value={amount}
-                    onChange={(e) => {
-                      setAmount(e.currentTarget.value);
-                    }}
-                  />
-                  <button onClick={handleGetFreeTokens}>Get Tokens</button>
+                  <button type="button" onClick={handleBuyTokens}>
+                    Buy Tokens
+                  </button>
                 </form>
               </>
             )}

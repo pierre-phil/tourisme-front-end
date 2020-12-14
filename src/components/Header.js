@@ -18,16 +18,17 @@ const Header = () => {
             <img className="logoIcon" src={PlaneIcon} alt="Btrip logo"></img>
           </span>
         </h1>
-        {/*<img src={Logo} alt="..."></img>*/}
         <nav>
           {onlyWidth > 700 ? (
             <>
+              <Link to="/getTokens">Agency</Link>
               <Link to="/travels">Travels</Link>
               <Link to="/reservation">Reservation</Link>
             </>
           ) : (
             <>
               <div className="menu">
+                <Link to="/getTokens">Agency</Link>
                 <Link to="/travels">Travels</Link>
                 <Link to="/reservation">Reservation</Link>
               </div>
