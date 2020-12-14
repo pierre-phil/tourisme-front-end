@@ -5,7 +5,6 @@ import Welcome from "./Welcome";
 import Register from "./Register";
 
 import Web3Info from "./Web3Info";
-import GetTokens from "./GetTokens";
 import { Web3Context } from "../hooks/useWeb3";
 import { TourismeContext } from "../App";
 
@@ -57,36 +56,6 @@ const Home = () => {
           </span>
         </>
       )}
-      {/*     
-      {!addressProvided && (
-        <div className="formAddress ">
-          <h2>Hello.</h2>
-          <div className="row">
-            <form>
-              <div className="col-12">
-                <label htmlFor="address">Please enter your address :</label>
-              </div>
-              <div className="col-12">
-                <input
-                  type="text"
-                  placeholder="0x0"
-                  id="address"
-                  name="address"
-                  value={address}
-                  onChange={(e) => {
-                    setAddress(e.currentTarget.value);
-                  }}
-                  required
-                ></input>
-              </div>
-              <button type="button" onClick={handleIsRegistered}>
-                Go
-              </button>
-            </form>
-          </div>
-        </div>
-      )} 
-      */}
       {register ? <Welcome /> : <Register />}
       <Web3Info />
     </>

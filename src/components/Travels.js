@@ -13,8 +13,6 @@ const Travels = () => {
   return (
     <section className="travel">
       <h2 className="title">Trending destinations</h2>
-      {/*<h3 className="secondaryTitle">Trending destinations</h3>*/}
-
       {destination !== undefined && (
         <div className="selection">
           <p>Your trip to {destination} :</p>

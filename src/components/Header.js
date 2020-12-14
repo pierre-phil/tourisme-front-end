@@ -18,7 +18,6 @@ const Header = () => {
             <img className="logoIcon" src={PlaneIcon} alt="Btrip logo"></img>
           </span>
         </h1>
-        {/*<img src={Logo} alt="..."></img>*/}
         <nav>
           {onlyWidth > 700 ? (
             <>
