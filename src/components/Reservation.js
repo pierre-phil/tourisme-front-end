@@ -9,7 +9,6 @@ const Reservation = () => {
   const { destination } = useContext(DestinationContext);
   const [reserved, setReserved] = useState(false);
   const Tourisme = useContext(TourismeContext);
-  //const TourToken = useContext(TourTokenContext);
   const [inputTransport, setInputTransport] = useState();
   const [inputAccommodation, setInputAccommodation] = useState("");
   const [inputCatering, setInputCatering] = useState("");
@@ -17,7 +16,6 @@ const Reservation = () => {
   const [inputTours, setInputTours] = useState("");
   const [getPrice, setGetPrice] = useState(0);
   const [ReserveID, setReserveID] = useState(0);
- // const [AddressPayment, setAddressPayment] = useState("0x0");
 
   const handleOnClickSaveOffer = async () => {
     setReserved(true);
@@ -62,7 +60,7 @@ const Reservation = () => {
             <div className="head">
               <h2>Reservation</h2>
             </div>
-            <form className="form" /*onSubmit={handleOnClickPay}*/>
+            <form className="form">
               {destination !== undefined ? (
                 <p>
                   Your trip to <span>{destination}</span>
